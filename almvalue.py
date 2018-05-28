@@ -218,35 +218,31 @@ class Value:
 		return Value(np.exp(self.x), np.abs(self.x * self.ux))
 
 	def sin(self):
-		a = self.x
-		return Value(np.sin(a), np.abs(np.cos(a) * self.ux))
+		return Value(np.sin(self.x), np.abs(np.cos(self.x) * self.ux))
 
 	def cos(self):
-		a = self.x
-		return Value(np.cos(a), np.abs(np.sin(a) * self.ux))
+		return Value(np.cos(self.x), np.abs(np.sin(self.x) * self.ux))
 
 	def tan(self):
-		a = self.x
-		return Value(np.tan(a), np.abs(self.ux / np.power(np.cos(a), 2)))
+		return Value(np.tan(self.x), np.abs(self.ux / np.power(np.cos(self.x), 2)))
 
 	def sqrt(self):
-		a = self.x
-		self.x = np.sqrt(a)
-		self.ux = self.ux / (2 * a)
-		return self
+		return Value(np.sqrt(self.x), self.ux / (2 * self.x))
 
 	def arcsin(self):
-		a = self.x
-		self.x = np.arcsin(a)
-		self.ux = self.ux / np.sqrt(1 - np.square(a))
-		return self
+		return Value(np.arcsin(self.x), self.ux / np.sqrt(1 - np.square(self.x)))
 
 	def arccos(self):
-		a = self.x
-		self.x = np.arccos(a)
-		self.ux = self.ux / np.sqrt(1 - np.square(a))
-		return self
+		return Value(np.arccos(self.x), self.ux / np.sqrt(1 - np.square(self.x)))
 
 	def arctan(self):
-		a = self.x
-		return Value(np.arctan(a), self.ux / (1 + np.square(a)))
+		return Value(np.arctan(self.x), self.ux / (1 + np.square(self.x)))
+
+	def sinh(self):
+		return Value(np.sinh(self.x), np.abs(np.cosh(self.x) * self.ux))
+
+	def cosh(self):
+		return Value(np.cosh(self.x), np.abs(np.sinh(self.x) * self.ux))
+
+	def tanh(self):
+		return Value(np.tanh(self.x), np.abs(self.ux / np.power(np.cosh(self.x), 2)))
