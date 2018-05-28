@@ -22,7 +22,7 @@ Perform any operation you want between Value(s):
 - Unary operators (all with numpy): `abs`, `exp`, `log`, `sqrt`, `sin`, `cos`, `tan`, `sinh`, `cosh`, `tanh`, `arcsin`, `arccos`, `arctan`
 - Comparison: `>=`, `>`, `=`, `<`, `<=`
 
-It's important that, for the unary operators, you use `numpy` as your base class for math. Operations made with the built-in `math` python library will result in terrible errors that for sure will end up destrying our and other universes.
+It's important that, for the unary operators, you use `numpy` as your base class for math. Operations made with the built-in `math` python library will result in terrible errors that for sure will end up destroying our and other universes.
 
 For more examples visit take a look at `text.py` file.
 
