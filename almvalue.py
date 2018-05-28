@@ -1,9 +1,6 @@
 from __future__ import division
 import numpy as np
 import sys
-#import re
-
-#PROG = re.compile(r'^(%d).%d')
 
 if sys.version_info[0] > 2:
 	xrange = lambda x: range(x)
@@ -155,10 +152,7 @@ class Value:
 		return Value(abs(self.x), self.ux)
 
 	def __invert__(self):
-		a = self.x
-		self.x = 1 / self.x
-		self.ux = np.abs(self.ux / (a*a))
-		return self
+		return Value(1 / self.x, np.abs(self.ux / self.x**2))
 
 	def __getitem__(self, key):
 		if isinstance(key, int):

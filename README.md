@@ -1,8 +1,37 @@
 # Uncertainty-Value-Calculator
 Simple python class to evaluate the uncertainty for complex or very long calculations given the initial values together with its uncertainty.
 
+# How-To
+The way it works is simple, first import the script as
+```python
+from almvalue import *
+```
+then initialise your `Value` variables (numbers, lists, matrices...) as
+```python
+pi = Value(3.14159, 0.00011) # number variable 3.14159 +/- 0.00011
+A = np.array([pi, Value(2.718, 0.036), Value(1.61803398875, 29e-11)]) # numpy array with 3 elements
+M = Value(np.random.rand(3,5), np.random.rand(3,5)*0.056) # 3x5 matrix
+```
+
+- `pi` is just a number variable with uncertainty
+- `A` is a list of value each one with each own uncertainty
+- `M` is a 3x5 value matrix (not a matrix of values) where the uncertainty is separated from the value, so this class only works as a container for keeping them together but some operations will not work properly (like multiplication). To initialize the matrix of values correctly we should do it as the list (an example of this is inside `test.py`).
+
+Perform any operation you want between Value(s):
+- Binary operators: `+`, `-`, `*`, `/`, `**`
+- Unary operators (all with numpy): `abs`, `exp`, `log`, `sqrt`, `sin`, `cos`, `tan`, `sinh`, `cosh`, `tanh`, `arcsin`, `arccos`, `arctan`
+- Comparison: `>=`, `>`, `=`, `<`, `<=`
+
+It's important that, for the unary operators, you use `numpy` as your base class for math. Operations made with the built-in `math` python library will result in terrible errors that for sure will end up destrying our and other universes.
+
+For more examples visit take a look at `text.py` file.
+
+# ToDo
+- Add inverse hyperbolic functions
+- Fix printing to follow current standards
+
 # License
-   Copyright [2018] [labay11]
+   Copyright 2018 labay11
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
