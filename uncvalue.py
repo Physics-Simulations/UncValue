@@ -202,7 +202,11 @@ class Value:
 		if isinstance(self.x, np.ndarray):
 			return '%s +/- %s' % (self.x, self.ux)
 
-		return '%.5g +/- %.5g' % (self.x, self.ux)
+		accuracy = int(np.ceil(np.log10(self.ux)))
+		fix_x = round(self.x * 10**(-accuracy) , 2)
+		fix_ux = round(self.ux * 10**(-accuracy) , 2)
+
+		return '(%s +/- %s)*10^%d' % (fix_x, fix_ux, accuracy)
 
 	def log(self):
 		a = self.x
@@ -218,19 +222,19 @@ class Value:
 		return Value(np.cos(self.x), np.abs(np.sin(self.x) * self.ux))
 
 	def tan(self):
-		return Value(np.tan(self.x), np.abs(self.ux / np.power(np.cos(self.x), 2)))
+		return Value(np.tan(self.x), np.abs(self.ux / np.cos(self.x)**2))
 
 	def sqrt(self):
 		return Value(np.sqrt(self.x), self.ux / (2 * self.x))
 
 	def arcsin(self):
-		return Value(np.arcsin(self.x), self.ux / np.sqrt(1 - np.square(self.x)))
+		return Value(np.arcsin(self.x), self.ux / np.sqrt(1 - self.x**2))
 
 	def arccos(self):
-		return Value(np.arccos(self.x), self.ux / np.sqrt(1 - np.square(self.x)))
+		return Value(np.arccos(self.x), self.ux / np.sqrt(1 - self.x**2))
 
 	def arctan(self):
-		return Value(np.arctan(self.x), self.ux / (1 + np.square(self.x)))
+		return Value(np.arctan(self.x), self.ux / (1 + self.x**2))
 
 	def sinh(self):
 		return Value(np.sinh(self.x), np.abs(np.cosh(self.x) * self.ux))
@@ -239,4 +243,13 @@ class Value:
 		return Value(np.cosh(self.x), np.abs(np.sinh(self.x) * self.ux))
 
 	def tanh(self):
-		return Value(np.tanh(self.x), np.abs(self.ux / np.power(np.cosh(self.x), 2)))
+		return Value(np.tanh(self.x), np.abs(self.ux / np.cosh(self.x)**2))
+
+	def arcsinh(self):
+		return Value(np.arcsinh(self.x), self.ux / np.sqrt(1 + self.x**2))
+	
+	def arccosh(self):
+		return Value(np.arccosh(self.x), self.ux / np.sqrt(self.x**2 - 1))
+
+	def arctanh(self):
+		return Value(np.arctanh(self.x), self.ux / (1 - self.x**2))

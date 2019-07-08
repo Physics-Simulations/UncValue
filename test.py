@@ -1,4 +1,4 @@
-from almvalue import *
+from uncvalue import *
 import numpy as np 
 import matplotlib.pyplot as plt
 
@@ -8,14 +8,15 @@ import matplotlib.pyplot as plt
 
 a = Value(3.12, 0.52)
 b = Value(2.569, 0.198)
-
+c = Value(0.00238, 0.0005498)
 # call val()/unc() to get the value/uncetainty of a Value
 print('Value = %.2f +/- %.2f' % (val(a), unc(a)))
+print('Value =', c)
 
 # perform any operation always using numpy library
 # operations made with python math library will not work
 print('a + b =', a + b)
-print('a*sin(b)=', a * np.sin(b))
+print('a*sin(b) =', a * np.sin(b))
 
 ###########################################
 #		   		  Lists					  #
@@ -55,7 +56,7 @@ print('Matrix product =\n', np.dot(H, np.tanh(M)))
 
 def generate_random_data_1(lth):
 	# generates a value list
-	return Value(np.random.rand(lth,2), np.random.rand(lth, 2)/10)
+	return Value(np.random.rand(lth, 2), np.random.rand(lth, 2)/10)
 
 def generate_random_data_2(lth):
 	# generates two list of values

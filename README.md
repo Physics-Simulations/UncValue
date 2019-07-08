@@ -4,7 +4,7 @@ Simple python class to evaluate the uncertainty for complex or very long calcula
 # How-To
 The way it works is simple, first import the script as
 ```python
-from almvalue import *
+from uncvalue import *
 ```
 then initialise your `Value` variables (numbers, lists, matrices...) as
 ```python
@@ -14,21 +14,21 @@ M = Value(np.random.rand(3,5), np.random.rand(3,5)*0.056) # 3x5 matrix
 ```
 
 - `pi` is just a number variable with uncertainty
-- `A` is a list of value each one with each own uncertainty
+- `A` is a list of values, each one with each own uncertainty
 - `M` is a 3x5 value matrix (not a matrix of values) where the uncertainty is separated from the value, so this class only works as a container for keeping them together but some operations will not work properly (like multiplication). To initialize the matrix of values correctly we should do it as the list (an example of this is inside `test.py`).
 
 Perform any operation you want between Value(s):
 - Binary operators: `+`, `-`, `*`, `/`, `**`
-- Unary operators (all with numpy): `abs`, `exp`, `log`, `sqrt`, `sin`, `cos`, `tan`, `sinh`, `cosh`, `tanh`, `arcsin`, `arccos`, `arctan`
+- Unary operators (all with numpy): `abs`, `exp`, `log`, `sqrt`, `sin(h)`, `cos(h)`, `tan(h)`, `arcsin(h)`, `arccos(h)`, `arctan(h)`
 - Comparison: `>=`, `>`, `=`, `<`, `<=`
 
 It's important that, for the unary operators, you use `numpy` as your base class for math. Operations made with the built-in `math` python library will result in terrible errors that for sure will end up destroying our and other universes.
 
-For more examples visit take a look at `text.py` file.
+For more examples visit take a look at [test.py](/test.py).
 
 # ToDo
-- Add inverse hyperbolic functions
-- Fix printing to follow current standards
+- Print lists to follow current standards
+- Compare values with the uncertainty
 
 # License
    Copyright 2018 labay11
