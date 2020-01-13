@@ -16,6 +16,7 @@ print('Value =', c)
 # perform any operation always using numpy library
 # operations made with python math library will not work
 print('a + b =', a + b)
+print('Inverse a = ', 1 / a, a**(-1))
 print('a*sin(b) =', a * np.sin(b))
 
 ###########################################

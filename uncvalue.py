@@ -115,17 +115,32 @@ class Value:
 		self.x = a.x
 		self.ux = a.ux
 
-	def __div__(self, y): # self / y
+	def __div__(self, y): # py2: self / y
 		return _value_binary_operator(self, y, 
 			lambda a,b: a//b, 
 			lambda a,b: np.hypot(a.ux // b.x, a.x * b.ux // (b.x * b.x)))
 
-	def __truediv__(self, y): # self // y
+	def __floordiv__(self, y): # py3: self // y
+		return _value_binary_operator(self, y, 
+			lambda a,b: a//b, 
+			lambda a,b: np.hypot(a.ux / b.x, a.x * b.ux / (b.x * b.x)))
+
+	def __truediv__(self, y): # py3: self / y
 		return _value_binary_operator(self, y, 
 			lambda a,b: a/b, 
 			lambda a,b: np.hypot(a.ux / b.x, a.x * b.ux / (b.x * b.x)))
 
-	def __rdiv__(self, y):
+	def __rdiv__(self, y): # py2: y / self
+		return _value_binary_operator(self, y, 
+			lambda a,b: b/a, 
+			lambda a,b: np.hypot(b.ux / a.x, b.x * a.ux / (a.x * a.x)))
+
+	def __rfloordiv__(self, y): # py3: y // self
+		return _value_binary_operator(self, y, 
+			lambda a,b: b//a, 
+			lambda a,b: np.hypot(b.ux / a.x, b.x * a.ux / (a.x * a.x)))
+
+	def __rtruediv__(self, y): # py3: y / self
 		return _value_binary_operator(self, y, 
 			lambda a,b: b/a, 
 			lambda a,b: np.hypot(b.ux / a.x, b.x * a.ux / (a.x * a.x)))
@@ -138,12 +153,12 @@ class Value:
 	def __pow__(self, y): # self**y
 		return _value_binary_operator(self, y, 
 			lambda a,b: np.power(a,b), 
-			lambda a,b: np.hypot(np.log(np.abs(a.x))*np.power(a.x,b.x)*a.ux, b.x*np.power(a.x,b.x-1)*b.ux))
+			lambda a,b: np.hypot(np.log(np.abs(a.x))*np.power(a.x,b.x)*b.ux, b.x*np.power(a.x,b.x-1)*a.ux))
 
 	def __rpow__(self, y): # y**self
 		return _value_binary_operator(self, y, 
 			lambda a,b: np.power(b,a), 
-			lambda a,b: np.hypot(np.log(np.abs(b.x))*np.power(b.x,a.x)*b.ux, a.x*np.power(b.x,a.x-1)*a.ux))
+			lambda a,b: np.hypot(np.log(np.abs(b.x))*np.power(b.x,a.x)*a.ux, a.x*np.power(b.x,a.x-1)*b.ux))
 
 	def __neg__(self):
 		return Value(-self.x, self.ux)
@@ -193,10 +208,7 @@ class Value:
 		return _compare(self.x, y, lambda a,b: a >= b)
 
 	def __repr__(self):
-		if isinstance(self.x, np.ndarray):
-			return '%s +/- %s' % (self.x, self.ux)
-
-		return '%.5g +/- %.5g' % (self.x, self.ux)
+		return self.__str__()
 
 	def __str__(self):
 		if isinstance(self.x, np.ndarray):
@@ -206,7 +218,10 @@ class Value:
 		fix_x = round(self.x * 10**(-accuracy) , 2)
 		fix_ux = round(self.ux * 10**(-accuracy) , 2)
 
-		return '(%s +/- %s)*10^%d' % (fix_x, fix_ux, accuracy)
+		if accuracy == 0:
+			return '%.2f +/- %.2f' % (fix_x, fix_ux)
+
+		return '(%.2f +/- %.2f)*10^%d' % (fix_x, fix_ux, accuracy)
 
 	def log(self):
 		a = self.x
