@@ -24,7 +24,7 @@ Perform any operation you want between Value(s):
 
 It's important that, for the unary operators, you use `numpy` as your base class for math. Operations made with the built-in `math` python library will result in terrible errors that for sure will end up destroying our and other universes.
 
-For more examples visit take a look at [test.py](/test.py).
+For more examples take a look at [test.py](/test.py).
 
 # ToDo
 - Compare values with the uncertainty
