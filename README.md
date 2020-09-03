@@ -1,3 +1,5 @@
+![python](https://github.com/Physics-Simulations/UncValue/workflows/python/badge.svg) [![codecov](https://codecov.io/gh/Physics-Simulations/UncValue/branch/master/graph/badge.svg)](https://codecov.io/gh/Physics-Simulations/UncValue)
+
 # Uncertainty-Value
 Simple python class to evaluate the uncertainty for complex or very long calculations given the initial values together with its uncertainty.
 
