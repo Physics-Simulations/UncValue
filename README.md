@@ -1,4 +1,4 @@
-# Uncertainty-Value-Calculator
+# Uncertainty-Value
 Simple python class to evaluate the uncertainty for complex or very long calculations given the initial values together with its uncertainty.
 
 # How-To
@@ -26,12 +26,12 @@ It's important that, for the unary operators, you use `numpy` as your base class
 
 For more examples take a look at [test.py](/test.py).
 
-# ToDo
-- Compare values with the uncertainty
-- Add to pip
+# Contributors
+- [Adrià Labay Mora](https://labay11.github.io/)
+- [Àlex Giménez Romero](https://github.com/agimenezromero)
 
 # License
-      Copyright 2018 labay11
+      Copyright 2020 Physics-Simulations
 
       Licensed under the Apache License, Version 2.0 (the "License");
       you may not use this file except in compliance with the License.
