@@ -9,8 +9,8 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="uncvalue",
     version=__version__,
-    author="Adria Labay Mora",
-    author_email="adria.labay@gmail.com",
+    author="Physics Simulations",
+    author_email="apuntsdefisica@gmail.com",
     description="Simple python class to propagate uncertainty in calculations.",
     long_description=long_description,
     long_description_content_type="text/markdown",
