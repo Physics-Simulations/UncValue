@@ -14,7 +14,7 @@ setuptools.setup(
     description="Simple python class to propagate uncertainty in calculations.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/labay11/Uncertainty-Value-Calculator",
+    url="https://github.com/Physics-Simulations/UncValue",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",

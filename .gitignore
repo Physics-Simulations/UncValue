@@ -1,6 +1,4 @@
 __pycache__
 build
 dist
-uncvalue_alm.egg-info
-
-.pypirc
+uncvalue.egg-info
