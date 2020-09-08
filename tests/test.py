@@ -1,10 +1,14 @@
 import pytest
+import sys
+import os
 
 from math import trunc, ceil, floor
 
 import numpy as np
 
-from uncvalue import Value, val, unc, set_unc
+sys.path.insert(0, os.getcwd())
+
+from uncvalue import Value, val, unc, set_unc  # noqa: E402
 
 ϵ = 1e-8
 

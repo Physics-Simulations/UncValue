@@ -33,7 +33,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=120 --statistics
     - name: Test and generate coverage report
       run: |
-        pytest --cov=./uncvalue --cov-report=xml -v ./tests/test.py
+        pytest --cov=uncvalue --cov-report=xml -v tests/test.py
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
