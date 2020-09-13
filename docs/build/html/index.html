@@ -1,0 +1,1150 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UncValue &#8212; UncValue 0.1.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="uncvalue">
+<h1>UncValue<a class="headerlink" href="#uncvalue" title="Permalink to this headline">¶</a></h1>
+<p>Simple python class to evaluate the uncertainty
+for complex or very long calculations given the initial values
+together with its uncertainty.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Install the extension with one of the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install uncvalue
+</pre></div>
+</div>
+</div>
+<div class="section" id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<span class="target" id="module-uncvalue"></span><dl class="py class">
+<dt id="uncvalue.Value">
+<em class="property">class </em><code class="sig-prename descclassname">uncvalue.</code><code class="sig-name descname">Value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">ux</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to keep track of the uncertainty of measured values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">int or float or tuple or list or numpy.ndarray</span></dt><dd><p>the value or list of values</p>
+</dd>
+<dt><strong>ux</strong><span class="classifier">int or float or tuple or list or numpy.ndarray</span></dt><dd><p>the uncertainty of the value,
+if <cite>x</cite> is a list and <cite>ux</cite> a single number,
+an array filled with <cite>ux</cite> will be created to match the dimensions of <cite>x</cite>,
+if both are list then the dimension must match</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><dl class="simple">
+<dt>ValueError</dt><dd><p>if any uncertainty is negative,
+if any value passed is complex,
+if dimensions of <cite>x</cite> and <cite>ux</cite> do not match when both are arrays</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="#uncvalue.unc" title="uncvalue.unc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unc</span></code></a></dt><dd><p>returns the uncertainty of the given instance</p>
+</dd>
+<dt><a class="reference internal" href="#uncvalue.val" title="uncvalue.val"><code class="xref py py-obj docutils literal notranslate"><span class="pre">val</span></code></a></dt><dd><p>returns the value of the given instance</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uncvalue.Value.arccos" title="uncvalue.Value.arccos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arccos</span></code></a>()</p></td>
+<td><p>computes the inverse cosinus of the value</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#uncvalue.Value.arccosh" title="uncvalue.Value.arccosh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arccosh</span></code></a>()</p></td>
+<td><p>computes the inverse hyperbolic cosinus of the value</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uncvalue.Value.arcsin" title="uncvalue.Value.arcsin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arcsin</span></code></a>()</p></td>
+<td><p>computes the inverse sinus of the value</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#uncvalue.Value.arcsinh" title="uncvalue.Value.arcsinh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arcsinh</span></code></a>()</p></td>
+<td><p>computes the inverse hyperbolic sinus of the value</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uncvalue.Value.arctan" title="uncvalue.Value.arctan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arctan</span></code></a>()</p></td>
+<td><p>computes the inverse tangent of the value</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#uncvalue.Value.arctanh" title="uncvalue.Value.arctanh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arctanh</span></code></a>()</p></td>
+<td><p>computes the inverse hyperbolic tangent of the value</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uncvalue.Value.cbrt" title="uncvalue.Value.cbrt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cbrt</span></code></a>()</p></td>
+<td><p>computes the cubic root of the value</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#uncvalue.Value.copy" title="uncvalue.Value.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
+<td><p>returns a new instance with the same value and uncertainty.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uncvalue.Value.cos" title="uncvalue.Value.cos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cos</span></code></a>()</p></td>
+<td><p>computes the cosinus of the value</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#uncvalue.Value.cosh" title="uncvalue.Value.cosh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cosh</span></code></a>()</p></td>
+<td><p>computes the hyperbolic cosinus of the value</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uncvalue.Value.exp" title="uncvalue.Value.exp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exp</span></code></a>()</p></td>
+<td><p>computes the exponentiation of the value</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#uncvalue.Value.exp2" title="uncvalue.Value.exp2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exp2</span></code></a>()</p></td>
+<td><p>computes the base two power of the value</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uncvalue.Value.expm1" title="uncvalue.Value.expm1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">expm1</span></code></a>()</p></td>
+<td><p>computes the exponentiation minus 1 of the value</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#uncvalue.Value.is_" title="uncvalue.Value.is_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_</span></code></a>(y)</p></td>
+<td><p>Extension of <cite>is</cite> keyword.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uncvalue.Value.is_not" title="uncvalue.Value.is_not"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_not</span></code></a>(y)</p></td>
+<td><p>Extension of <cite>is not</cite> keyword.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#uncvalue.Value.log" title="uncvalue.Value.log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log</span></code></a>()</p></td>
+<td><p>computes the natural logarithm of the value</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uncvalue.Value.log10" title="uncvalue.Value.log10"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log10</span></code></a>()</p></td>
+<td><p>computes the decimal logarithm of the value</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#uncvalue.Value.log1p" title="uncvalue.Value.log1p"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log1p</span></code></a>()</p></td>
+<td><p>computes the natural logarithm plus 1 of the value</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uncvalue.Value.log2" title="uncvalue.Value.log2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log2</span></code></a>()</p></td>
+<td><p>computes the binary logarithm of the value</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#uncvalue.Value.max" title="uncvalue.Value.max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max</span></code></a>(**kwargs)</p></td>
+<td><p>returns the maximum value in the range covered by the uncertainty</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uncvalue.Value.min" title="uncvalue.Value.min"><code class="xref py py-obj docutils literal notranslate"><span class="pre">min</span></code></a>(**kwargs)</p></td>
+<td><p>returns the minimum value in the range covered by the uncertainty</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#uncvalue.Value.precision" title="uncvalue.Value.precision"><code class="xref py py-obj docutils literal notranslate"><span class="pre">precision</span></code></a>()</p></td>
+<td><p>Gives the position of the least significant digit, counting as powers of 10.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uncvalue.Value.sin" title="uncvalue.Value.sin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sin</span></code></a>()</p></td>
+<td><p>computes the sinus of the value</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#uncvalue.Value.sinh" title="uncvalue.Value.sinh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sinh</span></code></a>()</p></td>
+<td><p>computes the hyperbolic sinus of the value</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uncvalue.Value.sqrt" title="uncvalue.Value.sqrt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sqrt</span></code></a>()</p></td>
+<td><p>computes the square root of the value</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#uncvalue.Value.tan" title="uncvalue.Value.tan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tan</span></code></a>()</p></td>
+<td><p>computes the tangent of the value</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uncvalue.Value.tanh" title="uncvalue.Value.tanh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tanh</span></code></a>()</p></td>
+<td><p>computes the hyperbolic tangent of the value</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="uncvalue.Value.__abs__">
+<code class="sig-name descname">__abs__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__abs__" title="Permalink to this definition">¶</a></dt>
+<dd><p>absolute value of the Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>|x|</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__add__">
+<code class="sig-name descname">__add__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__add__" title="Permalink to this definition">¶</a></dt>
+<dd><p>addition (+) of the Value and a number or another Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>self</cite> + <cite>y</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__bool__">
+<code class="sig-name descname">__bool__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__bool__" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns true if the value is different from 0 and false otherwise</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__ceil__">
+<code class="sig-name descname">__ceil__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__ceil__" title="Permalink to this definition">¶</a></dt>
+<dd><p>ceils the number to match the precision dictated by the uncertainty</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>float or numpy.ndarray</dt><dd><p>the value ceiled to 2 significant digits of precision</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ceil</span></code></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__complex__">
+<code class="sig-name descname">__complex__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__complex__" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the complex representation of the value without uncertainty</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__contains__">
+<code class="sig-name descname">__contains__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__contains__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extension of <cite>in</cite> keyword. Checks if the <cite>y</cite> value is within the uncertainty of this value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__div__">
+<code class="sig-name descname">__div__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__div__" title="Permalink to this definition">¶</a></dt>
+<dd><p>division (/) of the Value and a number or another Value</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 3.0: </span><cite>__div__</cite> has been removed from Python &gt; 2.7 and replaced by <cite>__truediv__</cite></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>self</cite> / <cite>y</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#uncvalue.Value.__truediv__" title="uncvalue.Value.__truediv__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uncvalue.Value.__truediv__</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__eq__">
+<code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Equal than comparison between <cite>self</cite> and <cite>y</cite></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__float__">
+<code class="sig-name descname">__float__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__float__" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the float representation of the value without uncertainty</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__floor__">
+<code class="sig-name descname">__floor__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__floor__" title="Permalink to this definition">¶</a></dt>
+<dd><p>floors the number to match the precision dictated by the uncertainty</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>float or numpy.ndarray</dt><dd><p>the value floored to 2 significant digits of precision</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.floor</span></code></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__floordiv__">
+<code class="sig-name descname">__floordiv__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__floordiv__" title="Permalink to this definition">¶</a></dt>
+<dd><p>integer division (//) of the Value and a number or another Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>self</cite> // <cite>y</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__ge__">
+<code class="sig-name descname">__ge__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__ge__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Greater or equal than comparison between <cite>self</cite> and <cite>y</cite></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__gt__">
+<code class="sig-name descname">__gt__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__gt__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Greater than comparison between <cite>self</cite> and <cite>y</cite></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__iadd__">
+<code class="sig-name descname">__iadd__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__iadd__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self addition (+=) of the number and a float or another Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>self</cite> += <cite>y</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__idiv__">
+<code class="sig-name descname">__idiv__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__idiv__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self division (/=) of the Value and a number or another Value</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 3.0: </span><cite>__idiv__</cite> has been removed from Python &gt; 2.7 and replaced by <cite>__itruediv__</cite></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>self</cite> /= <cite>y</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#uncvalue.Value.__itruediv__" title="uncvalue.Value.__itruediv__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uncvalue.Value.__itruediv__</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__ifloordiv__">
+<code class="sig-name descname">__ifloordiv__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__ifloordiv__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self integer division (//=) of the Value and a number or another Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>self</cite> //= <cite>y</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__imul__">
+<code class="sig-name descname">__imul__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__imul__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self product (*=) of the number and a float or another Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>self</cite> *= <cite>y</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">ux</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__int__">
+<code class="sig-name descname">__int__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__int__" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the int representation of the value without uncertainty</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__invert__">
+<code class="sig-name descname">__invert__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__invert__" title="Permalink to this definition">¶</a></dt>
+<dd><p>invert value with respect to the multiplication of the Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>1 / x</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__ipow__">
+<code class="sig-name descname">__ipow__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__ipow__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self power (**=) of the Value and a number or another Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>self</cite> **= <cite>y</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__isub__">
+<code class="sig-name descname">__isub__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__isub__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self substraction (-=) of the number and a float or another Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>self</cite> -= <cite>y</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__itruediv__">
+<code class="sig-name descname">__itruediv__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__itruediv__" title="Permalink to this definition">¶</a></dt>
+<dd><p>self true division (/=) of the Value and a number or another Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>self</cite> /= <cite>y</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__le__">
+<code class="sig-name descname">__le__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__le__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Smaller or equal than comparison between <cite>self</cite> and <cite>y</cite></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__lt__">
+<code class="sig-name descname">__lt__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__lt__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Smaller than comparison between <cite>self</cite> and <cite>y</cite></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__mul__">
+<code class="sig-name descname">__mul__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__mul__" title="Permalink to this definition">¶</a></dt>
+<dd><p>product (*) of the Value and a number or another Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>self</cite> * <cite>y</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__ne__">
+<code class="sig-name descname">__ne__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__ne__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not equal to comparison between <cite>self</cite> and <cite>y</cite></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__neg__">
+<code class="sig-name descname">__neg__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__neg__" title="Permalink to this definition">¶</a></dt>
+<dd><p>negation of the Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>-x</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__pow__">
+<code class="sig-name descname">__pow__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__pow__" title="Permalink to this definition">¶</a></dt>
+<dd><p>power (**) of the Value and a number or another Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>self</cite> ** <cite>y</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__radd__">
+<code class="sig-name descname">__radd__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__radd__" title="Permalink to this definition">¶</a></dt>
+<dd><p>addition (+) of a number and the Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>y</cite> + <cite>self</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__rdiv__">
+<code class="sig-name descname">__rdiv__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__rdiv__" title="Permalink to this definition">¶</a></dt>
+<dd><p>right division (/) of a number and the Value</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 3.0: </span><cite>__rdiv__</cite> has been removed from Python &gt; 2.7 and replaced by <cite>__rtruediv__</cite></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>y</cite> / <cite>self</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#uncvalue.Value.__rtruediv__" title="uncvalue.Value.__rtruediv__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uncvalue.Value.__rtruediv__</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__repr__">
+<code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return repr(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__rfloordiv__">
+<code class="sig-name descname">__rfloordiv__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__rfloordiv__" title="Permalink to this definition">¶</a></dt>
+<dd><p>right integer division (//) of a number and the Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>y</cite> // <cite>self</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__rmul__">
+<code class="sig-name descname">__rmul__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__rmul__" title="Permalink to this definition">¶</a></dt>
+<dd><p>product (*) of a number and the Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>y</cite> * <cite>self</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__round__">
+<code class="sig-name descname">__round__</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__round__" title="Permalink to this definition">¶</a></dt>
+<dd><p>rounds the number to match the precision dictated by the uncertainty</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>float or numpy.ndarray</dt><dd><p>the value rounded to 2 significant digits of precision</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.around</span></code></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__rpow__">
+<code class="sig-name descname">__rpow__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__rpow__" title="Permalink to this definition">¶</a></dt>
+<dd><p>power (**) of a number and the Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>y</cite> ** <cite>self</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__rsub__">
+<code class="sig-name descname">__rsub__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__rsub__" title="Permalink to this definition">¶</a></dt>
+<dd><p>substraction (-) of a number and the Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>y</cite> - <cite>self</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__rtruediv__">
+<code class="sig-name descname">__rtruediv__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__rtruediv__" title="Permalink to this definition">¶</a></dt>
+<dd><p>right true division (/) of a number and the Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>y</cite> / <cite>self</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__str__">
+<code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>String represrntation of a number with its uncertainty.</p>
+<p>The number is rounded as to match the precision given by the two most significant digits of the uncertainty</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__sub__">
+<code class="sig-name descname">__sub__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__sub__" title="Permalink to this definition">¶</a></dt>
+<dd><p>substraction (-) of the Value and a number or another Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>self</cite> - <cite>y</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__truediv__">
+<code class="sig-name descname">__truediv__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__truediv__" title="Permalink to this definition">¶</a></dt>
+<dd><p>true division (/) of the Value and a number or another Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Value</dt><dd><p><cite>self</cite> / <cite>y</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">operator.__truediv__</span></code></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.__trunc__">
+<code class="sig-name descname">__trunc__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.__trunc__" title="Permalink to this definition">¶</a></dt>
+<dd><p>truncates the number to match the precision dictated by the uncertainty</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>float or numpy.ndarray</dt><dd><p>the value truncated to 2 significant digits of precision</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.trunc</span></code></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="uncvalue.Value.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#uncvalue.Value.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.arccos">
+<code class="sig-name descname">arccos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.arccos" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the inverse cosinus of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.arccosh">
+<code class="sig-name descname">arccosh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.arccosh" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the inverse hyperbolic cosinus of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.arcsin">
+<code class="sig-name descname">arcsin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.arcsin" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the inverse sinus of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.arcsinh">
+<code class="sig-name descname">arcsinh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.arcsinh" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the inverse hyperbolic sinus of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.arctan">
+<code class="sig-name descname">arctan</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.arctan" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the inverse tangent of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.arctanh">
+<code class="sig-name descname">arctanh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.arctanh" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the inverse hyperbolic tangent of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.cbrt">
+<code class="sig-name descname">cbrt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.cbrt" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the cubic root of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns a new instance with the same value and uncertainty.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.cos">
+<code class="sig-name descname">cos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.cos" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the cosinus of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.cosh">
+<code class="sig-name descname">cosh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.cosh" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the hyperbolic cosinus of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.exp">
+<code class="sig-name descname">exp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.exp" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the exponentiation of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.exp2">
+<code class="sig-name descname">exp2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.exp2" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the base two power of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.expm1">
+<code class="sig-name descname">expm1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.expm1" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the exponentiation minus 1 of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.is_">
+<code class="sig-name descname">is_</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.is_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extension of <cite>is</cite> keyword. Returns true if <cite>self</cite> is equal to <cite>y</cite> in the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.is_not">
+<code class="sig-name descname">is_not</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.is_not" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extension of <cite>is not</cite> keyword. Returns true if <cite>self</cite> is not  equal to <cite>y</cite> in the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.log">
+<code class="sig-name descname">log</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the natural logarithm of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.log10">
+<code class="sig-name descname">log10</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.log10" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the decimal logarithm of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.log1p">
+<code class="sig-name descname">log1p</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.log1p" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the natural logarithm plus 1 of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.log2">
+<code class="sig-name descname">log2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.log2" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the binary logarithm of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.max">
+<code class="sig-name descname">max</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.max" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the maximum value in the range covered by the uncertainty</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>float or numpy.ndarray</dt><dd><p><cite>x</cite> + <cite>ux</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.min">
+<code class="sig-name descname">min</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.min" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the minimum value in the range covered by the uncertainty</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>float or numpy.ndarray</dt><dd><p><cite>x</cite> - <cite>ux</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.precision">
+<code class="sig-name descname">precision</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.precision" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives the position of the least significant digit, counting as powers of 10.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>int or numpy.ndarray of ints</dt><dd><p>the precision of the number</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Here are some examples of the output given by this function:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 52%" />
+<col style="width: 48%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Uncertainty</p></th>
+<th class="head"><p>Precision</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1,45e-04</p></td>
+<td><p>-7</p></td>
+</tr>
+<tr class="row-odd"><td><p>0,001456</p></td>
+<td><p>-3</p></td>
+</tr>
+<tr class="row-even"><td><p>0,0006666</p></td>
+<td><p>-4</p></td>
+</tr>
+<tr class="row-odd"><td><p>0,123</p></td>
+<td><p>-1</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>22,22</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>7684,65</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>17,8e8</p></td>
+<td><p>9</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.sin">
+<code class="sig-name descname">sin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.sin" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the sinus of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.sinh">
+<code class="sig-name descname">sinh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.sinh" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the hyperbolic sinus of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.sqrt">
+<code class="sig-name descname">sqrt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.sqrt" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the square root of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.tan">
+<code class="sig-name descname">tan</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.tan" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the tangent of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.tanh">
+<code class="sig-name descname">tanh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.Value.tanh" title="Permalink to this definition">¶</a></dt>
+<dd><p>computes the hyperbolic tangent of the value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.unc">
+<em class="property">property </em><code class="sig-name descname">unc</code><a class="headerlink" href="#uncvalue.Value.unc" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the uncertainty of the given instance</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#uncvalue.unc" title="uncvalue.unc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uncvalue.unc</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="uncvalue.Value.val">
+<em class="property">property </em><code class="sig-name descname">val</code><a class="headerlink" href="#uncvalue.Value.val" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the value of the given instance</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#uncvalue.val" title="uncvalue.val"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uncvalue.val</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="uncvalue.set_unc">
+<code class="sig-prename descclassname">uncvalue.</code><code class="sig-name descname">set_unc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">ux</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.set_unc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the given uncertainty to the specified value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">int or float or tuple or list or numpy.ndarray or Value</span></dt><dd><p>the parameter to set the uncertainty to</p>
+</dd>
+<dt><strong>ux</strong><span class="classifier">int or float or tuple or list or numpy.ndarray</span></dt><dd><p>the uncertainty to assciate to the given value,
+if <cite>ux</cite> is a list or similar it must have the same shape as <cite>x</cite></p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>value</strong><span class="classifier">Value or numpy.ndarray</span></dt><dd><p>the value with the uncertainty,
+if the input parameter is an array it will return an array of Values with the same shape</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>For a single value this is the same as initialising a new instance of Value, i.e. <cite>set_unc(3.14, 0.25)</cite> and
+<cite>Value(3.14, 0.25)</cite> return the same result.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">uncvalue</span> <span class="kn">import</span> <span class="n">Value</span><span class="p">,</span> <span class="n">set_unc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">set_unc</span><span class="p">(</span><span class="mf">3.14</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+<span class="go">(31.4 ± 2.5)·10^-1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">set_unc</span><span class="p">([</span><span class="mf">3.14</span><span class="p">,</span> <span class="mf">2.17</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">])</span>
+<span class="go">array([(31.4 ± 2.5)·10^-1, (217.0 ± 3.0)·10^-2], dtype=object)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="uncvalue.unc">
+<code class="sig-prename descclassname">uncvalue.</code><code class="sig-name descname">unc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.unc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the uncertainty of input parameter without the value as pure Python numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>b: int or float or tuple or list or numpy.ndarray or Value</strong></dt><dd><p>the parameter to extract the uncertainty from</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>value: int or float or numpy.ndarray</dt><dd><p>the uncertainty without the value,
+if the input parameter is already a pure python number it return 0,
+if the input parameter is an array it will return an array of floats with the same shape</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#uncvalue.val" title="uncvalue.val"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uncvalue.val</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">uncvalue</span> <span class="kn">import</span> <span class="n">Value</span><span class="p">,</span> <span class="n">unc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unc</span><span class="p">(</span><span class="n">Value</span><span class="p">(</span><span class="mf">3.14</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">))</span>
+<span class="go">0.25</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unc</span><span class="p">([</span><span class="n">Value</span><span class="p">(</span><span class="mf">3.14</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">),</span> <span class="n">Value</span><span class="p">(</span><span class="mf">2.17</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">)])</span>
+<span class="go">array([0.25, 0.03])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unc</span><span class="p">(</span><span class="n">Value</span><span class="p">([</span><span class="mf">3.14</span><span class="p">,</span> <span class="mf">2.17</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">]))</span>
+<span class="go">array([0.25, 0.03])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="uncvalue.val">
+<code class="sig-prename descclassname">uncvalue.</code><code class="sig-name descname">val</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#uncvalue.val" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the values of input parameter without the uncertainty as pure Python numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>b: int or float or tuple or list or numpy.ndarray or Value</strong></dt><dd><p>the parameter to extract the value from</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>value: int or float or numpy.ndarray</dt><dd><p>the value without the uncertainty,
+if the input parameter is an array it will return an array of floats with the same shape</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#uncvalue.unc" title="uncvalue.unc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uncvalue.unc</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">uncvalue</span> <span class="kn">import</span> <span class="n">Value</span><span class="p">,</span> <span class="n">val</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">val</span><span class="p">(</span><span class="n">Value</span><span class="p">(</span><span class="mf">3.14</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">))</span>
+<span class="go">3.14</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">val</span><span class="p">([</span><span class="n">Value</span><span class="p">(</span><span class="mf">3.14</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">),</span> <span class="n">Value</span><span class="p">(</span><span class="mf">2.17</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">)])</span>
+<span class="go">array([3.14, 2.17])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">val</span><span class="p">(</span><span class="n">Value</span><span class="p">([</span><span class="mf">3.14</span><span class="p">,</span> <span class="mf">2.17</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">]))</span>
+<span class="go">array([3.14, 2.17])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">UncValue</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Physics Simulations.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
