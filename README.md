@@ -3,6 +3,9 @@
 # Uncertainty-Value
 Simple python class to evaluate the uncertainty for complex or very long calculations given the initial values together with its uncertainty.
 
+# Installation
+Easy instal using pip: `pip install uncvalue`
+
 # How-To
 The way it works is simple, first import the script as
 ```python
