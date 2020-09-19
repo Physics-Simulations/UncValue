@@ -20,7 +20,7 @@ M = Value(np.random.rand(3,5), np.random.rand(3,5)*0.056) # 3x5 matrix
 
 - `pi` is just a number variable with uncertainty
 - `A` is a list of values, each one with each own uncertainty
-- `M` is a 3x5 value matrix (not a matrix of values) where the uncertainty is separated from the value, so this class only works as a container for keeping them together but some operations will not work properly (like multiplication). To initialize the matrix of values correctly we should do it as the list (an example of this is inside `test.py`).
+- `M` is a 3x5 value matrix (not a matrix of values) where the uncertainty is separated from the value, so this class only works as a container for keeping them together but some operations will not work properly (like multiplication). To initialize the matrix of values correctly we should do it as the list (an example of this is inside the [samples](sample/) folder).
 
 Perform any operation you want between Value(s):
 - Binary operators: `+`, `-`, `*`, `/`, `**`
@@ -29,7 +29,7 @@ Perform any operation you want between Value(s):
 
 It's important that, for the unary operators, you use `numpy` as your base class for math. Operations made with the built-in `math` python library will result in terrible errors that for sure will end up destroying our and other universes.
 
-For more examples take a look at [test.py](/test.py).
+For more examples take a look at [test.py](tests/test.py).
 
 # Contributors
 - [Adrià Labay Mora](https://labay11.github.io/)
