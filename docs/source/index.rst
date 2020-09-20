@@ -12,6 +12,7 @@ together with its uncertainty.
    :maxdepth: 2
 
    install
+   sample
    api
    contact
 
