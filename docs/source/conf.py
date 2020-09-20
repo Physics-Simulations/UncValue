@@ -34,7 +34,8 @@ master_doc = 'index'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
-    'numpydoc'
+    'numpydoc',
+    'recommonmark'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
